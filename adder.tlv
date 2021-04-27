@@ -10,7 +10,7 @@
    // Macro providing required top-level module definition, random
    // stimulus support, and Verilator config.
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
-\TLV adder($a,$b,$c)
+\TLV adder($a, $b, $$c)
    $c = $a + $b;
    
    
