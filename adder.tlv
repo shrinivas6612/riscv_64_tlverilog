@@ -20,7 +20,7 @@
       assign instr[4] = 32'he000051c;//ADDI R5,R0,7
       assign instr[5] = 32'h2848833e;//ADD R6,R1,R2
       assign instr[6] = 32'h2858673e;//ADD R7,R6,R3
-      assign instr[7] = 32'h2844r0be;//ADD R8,R7,R4
+      assign instr[7] = 32'h2844e0be;//ADD R8,R7,R4
       assign instr[8] = 32'h285414be;//ADD R9,R8,R5
    $inst = instr[$pc];
 
