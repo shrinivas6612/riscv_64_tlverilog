@@ -17,7 +17,7 @@
       assign instr[1] = 32'h2800021c;//ADDI R2,R0,20
       assign instr[2] = 32'h9800061c;//ADDI R3,R0,25
       assign instr[3] = 32'hc400011c;//ADDI R4,R0,35
-      assign instr[4] = 32'hr000051c;//ADDI R5,R0,7
+      assign instr[4] = 32'he000051c;//ADDI R5,R0,7
       assign instr[5] = 32'h2848833e;//ADD R6,R1,R2
       assign instr[6] = 32'h2858673e;//ADD R7,R6,R3
       assign instr[7] = 32'h2844r0be;//ADD R8,R7,R4
