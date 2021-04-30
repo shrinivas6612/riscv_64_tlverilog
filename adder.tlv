@@ -24,22 +24,22 @@
       assign instr[8] = 32'h005404B3;//ADD R9,R8,R5
    $inst = instr[$pc];
 
-\TLV rf(_entries, _width, $_reset, $_port1_en, $_port1_index, $_port1_data, $_port2_en, $_port2_index, $_port2_data, $_port3_en, $_port3_index, $_port3_data)
-   $rf1_wr_en = m4_argn(4, $@);
-   $rf1_wr_index[\$clog2(_entries)-1:0]  = m4_argn(5, $@);
-   $rf1_wr_data[_width-1:0] = m4_argn(6, $@);
+\TLV rf(_entries, _width, $_reset, $port1_en, $port1_index, $port1_data, $port2_en, $port2_index, $port2_data, $port3_en, $port3_index, $port3_data)
+   $rf1_wr_en = $port1_en;
+   $rf1_wr_index[\$clog2(_entries)-1:0]  = $port1_index;
+   $rf1_wr_data[_width-1:0] = $port1_data;
    
-   $rf1_rd_en1 = m4_argn(7, $@);
-   $rf1_rd_index1[\$clog2(_entries)-1:0] = m4_argn(8, $@);
+   $rf1_rd_en1 = $port2_en;
+   $rf1_rd_index1[\$clog2(_entries)-1:0] = $port2_index;
    
-   $rf1_rd_en2 = m4_argn(10, $@);
-   $rf1_rd_index2[\$clog2(_entries)-1:0] = m4_argn(11, $@);
+   $rf1_rd_en2 = $port3_en;
+   $rf1_rd_index2[\$clog2(_entries)-1:0] = $port3_index;
    
    /xreg[m4_eval(_entries-1):0]
       $wr = /top$rf1_wr_en && (/top$rf1_wr_index == #xreg);
-      <<1$value[_width-1:0] = /top$_reset ? #xreg              :
+      <<1$value[_width-1:0] = /top$_reset ? #xreg :
                                  $wr      ? /top$rf1_wr_data :
                                             $RETAIN;
    
-   $_port2_data[_width-1:0]  =  $rf1_rd_en1 ? /xreg[$rf1_rd_index1]$value : 'X;
-   $_port3_data[_width-1:0]  =  $rf1_rd_en2 ? /xreg[$rf1_rd_index2]$value : 'X;
+   $port2_data[_width-1:0]  =  $rf1_rd_en1 ? /xreg[$rf1_rd_index1]$value : 'X;
+   $port3_data[_width-1:0]  =  $rf1_rd_en2 ? /xreg[$rf1_rd_index2]$value : 'X;
