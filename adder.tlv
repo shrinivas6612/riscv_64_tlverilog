@@ -43,3 +43,19 @@
    
    $port2_data[_width-1:0]  =  $rf1_rd_en1 ? /xreg[$rf1_rd_index1]$value : 'X;
    $port3_data[_width-1:0]  =  $rf1_rd_en2 ? /xreg[$rf1_rd_index2]$value : 'X;
+
+\TLV dmem(_entries, _width, $reset, $addr, $port1_en, $port1_data, $port2_en, $port2_data)
+   // Allow expressions for most inputs, so define input signals.
+   $dmem1_wr_en = $port1_en;
+   $dmem1_addr[\$clog2(_entries)-1:0] = $addr;
+   $dmem1_wr_data[_width-1:0] = $port1_data;
+   
+   $dmem1_rd_en = $port2_en;
+   
+   /dmem[m4_eval(_entries-1):0]
+      $wr = /top$dmem1_wr_en && (/top$dmem1_addr == #dmem);
+      <<1$value[_width-1:0] = /top$reset ? 0 :
+                              $wr         ? /top$dmem1_wr_data :
+                                            $RETAIN;
+   
+   $port2_data[_width-1:0] = $dmem1_rd_en ? /dmem[$dmem1_addr]$value : 'X;
