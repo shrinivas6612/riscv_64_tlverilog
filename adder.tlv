@@ -21,7 +21,7 @@
       assign instr[5] = 32'h2848833e;//ADD R6,R1,R2
       assign instr[6] = 32'h2858673e;//ADD R7,R6,R3
       assign instr[7] = 32'h2844e0be;//ADD R8,R7,R4
-      assign instr[8] = 32'h285414be;//ADD R9,R8,R5
+      assign instr[8] = 32'h285414be;//ADD R9,R8, R5
    $inst = instr[$pc];
 
 \TLV rf(_entries, _width, $_reset, $port1_en, $port1_index, $port1_data, $port2_en, $port2_index, $port2_data, $port3_en, $port3_index, $port3_data)
