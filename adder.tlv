@@ -12,7 +12,7 @@
    m4_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV inst($pc, $inst)
    \SV_plus
-      logic [31:0] instr[0:32];
+      logic [0:31] instr[0:31];
       assign instr[0] = 32'h3820000a;//addi R1,R0,10
       assign instr[1] = 32'h38400014;//ADDI R2,R0,20
       assign instr[2] = 32'h38600019;//ADDI R3,R0,25
