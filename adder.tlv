@@ -13,15 +13,15 @@
 \TLV inst($pc, $inst)
    \SV_plus
       logic [31:0] instr[0:32];
-      assign instr[0] = 32'h00a00093;//addi R1,R0,10
-      assign instr[1] = 32'h01400113;//ADDI R2,R0,20
-      assign instr[2] = 32'h01900193;//ADDI R3,R0,25
-      assign instr[3] = 32'h02300213;//ADDI R4,R0,35
-      assign instr[4] = 32'h00700293;//ADDI R5,R0,7
-      assign instr[5] = 32'h00208333;//ADD R6,R1,R2
-      assign instr[6] = 32'h003303b3;//ADD R7,R6,R3
-      assign instr[7] = 32'h00438433;//ADD R8,R7,R4
-      assign instr[8] = 32'h005404B3;//ADD R9,R8,R5
+      assign instr[0] = 32'h3820000a;//addi R1,R0,10
+      assign instr[1] = 32'h38400014;//ADDI R2,R0,20
+      assign instr[2] = 32'h38600019;//ADDI R3,R0,25
+      assign instr[3] = 32'h38800023;//ADDI R4,R0,35
+      assign instr[4] = 32'h38a00007;//ADDI R5,R0,7
+      assign instr[5] = 32'h7cc11214;//ADD R6,R1,R2
+      assign instr[6] = 32'h7ce61a14;//ADD R7,R6,R3
+      assign instr[7] = 32'h7d072214;//ADD R8,R7,R4
+      assign instr[8] = 32'h7d282a14;//ADD R9,R8,R5
    $inst = instr[$pc];
 
 \TLV rf(_entries, _width, $_reset, $port1_en, $port1_index, $port1_data, $port2_en, $port2_index, $port2_data, $port3_en, $port3_index, $port3_data)
